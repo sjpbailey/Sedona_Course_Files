@@ -1,0 +1,8 @@
+CControls_HVAC 
+: AntiSCY = heat on off delay ON = 15sec OFF = 120
+: NumDamp = Smoothing
+timing
+: OneShot = NumDamp 2ramp
+: DelayOff = NumDamp 10sec
+: DelayOn = AntiSCY HEAT 10sec
+: DelayOff = Fan 60sec

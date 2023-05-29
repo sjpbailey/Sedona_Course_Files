@@ -1,0 +1,186 @@
+<?xml version='1.0'?>
+<sedonaApp>
+<schema>
+  <kit name="sys" checksum="d3984c51" />
+  <kit name="CControls_BASCPI_IO" checksum="063187a6" />
+  <kit name="CControls_BASCPI_Platform" checksum="cf8f16e6" />
+  <kit name="CControls_BASCPI_Web" checksum="a344e84a" />
+  <kit name="CControls_Email" checksum="397d4689" />
+  <kit name="CControls_Function" checksum="79b58b76" />
+  <kit name="CControls_Function2" checksum="725909ac" />
+  <kit name="CControls_HVAC" checksum="d216a02f" />
+  <kit name="CControls_Math" checksum="a6c8fdcd" />
+  <kit name="CControls_Schedule" checksum="f4c8eff8" />
+  <kit name="basicSchedule" checksum="7fdca638" />
+  <kit name="datetime" checksum="3a280dce" />
+  <kit name="datetimeStd" checksum="fc5628d7" />
+  <kit name="func" checksum="821b7396" />
+  <kit name="hvac" checksum="7264c67c" />
+  <kit name="inet" checksum="25648ba7" />
+  <kit name="logic" checksum="9fe95ce1" />
+  <kit name="math" checksum="c22b255c" />
+  <kit name="pricomp" checksum="b5cd6698" />
+  <kit name="pstore" checksum="7ea2cb06" />
+  <kit name="sox" checksum="397a84dd" />
+  <kit name="timing" checksum="aeaac82a" />
+  <kit name="types" checksum="10936551" />
+</schema>
+<app>
+  <prop name="deviceName" val="BAScontrolPI"/>
+  <prop name="appName" val="Default App"/>
+  <prop name="scanPeriod" val="200"/>
+  <!-- /service -->
+  <comp name="service" id="1" type="sys::Folder">
+    <prop name="meta" val="33685505"/>
+    <!-- /service/plat -->
+    <comp name="plat" id="11" type="CControls_BASCPI_Platform::BASCPIPlatformService">
+      <prop name="meta" val="34340865"/>
+      <prop name="platformId" val="ccontrols-BASCPI-4.0.0"/>
+      <prop name="platformVer" val="BAScontrol 2.0.1"/>
+      <prop name="memAvailable" val="1055612928"/>
+    </comp>
+    <!-- /service/users -->
+    <comp name="users" id="3" type="sys::UserService">
+      <prop name="meta" val="34013185"/>
+      <!-- /service/users/admin -->
+      <comp name="admin" id="4" type="sys::User">
+        <prop name="cred" val="x1nq8J5GOJVPY6zgzhtTtA9izLc="/>
+        <prop name="perm" val="2147483647"/>
+        <prop name="prov" val="255"/>
+      </comp>
+      <!-- /service/users/user -->
+      <comp name="user" id="6" type="sys::User">
+        <prop name="cred" val="F46PeTVYeItL6aAyygIVQ9OaaeY="/>
+        <prop name="perm" val="522133279"/>
+        <prop name="prov" val="1"/>
+      </comp>
+    </comp>
+    <!-- /service/sox -->
+    <comp name="sox" id="5" type="sox::SoxService">
+      <prop name="meta" val="33685505"/>
+    </comp>
+    <!-- /service/pstore -->
+    <comp name="pstore" id="12" type="pstore::PstoreService">
+      <prop name="meta" val="34734081"/>
+      <prop name="size" val="32769"/>
+    </comp>
+    <!-- /service/time -->
+    <comp name="time" id="13" type="datetimeStd::DateTimeServiceStd">
+      <prop name="meta" val="35127297"/>
+      <prop name="nanos" val="738615546000000000"/>
+      <prop name="hour" val="10"/>
+      <prop name="minute" val="59"/>
+      <prop name="second" val="6"/>
+      <prop name="year" val="2023"/>
+      <prop name="month" val="5"/>
+      <prop name="day" val="28"/>
+      <prop name="utcOffset" val="-28800"/>
+      <prop name="osUtcOffset" val="true"/>
+    </comp>
+  </comp>
+  <!-- /Sheet -->
+  <comp name="Sheet" id="2" type="sys::Folder">
+    <prop name="meta" val="33882113"/>
+    <!-- /Sheet/Fan -->
+    <comp name="Fan" id="7" type="CControls_BASCPI_IO::BO1">
+      <prop name="meta" val="1527382017"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /Sheet/Enable -->
+    <comp name="Enable" id="8" type="CControls_BASCPI_IO::VT01">
+      <prop name="meta" val="84344833"/>
+      <prop name="Initialized" val="true"/>
+    </comp>
+    <!-- /Sheet/tstat -->
+    <comp name="tstat" id="9" type="CControls_BASCPI_IO::UI1">
+      <prop name="meta" val="86704129"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="ChnType" val="2"/>
+      <prop name="outF" val="74.54"/>
+      <prop name="outI" val="74"/>
+    </comp>
+    <!-- /Sheet/fanst -->
+    <comp name="fanst" id="10" type="CControls_BASCPI_IO::UI2">
+      <prop name="meta" val="85000193"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="ChnType" val="1"/>
+    </comp>
+    <!-- /Sheet/NumDamp -->
+    <comp name="NumDamp" id="15" type="CControls_HVAC::NumDamp">
+      <prop name="meta" val="455606273"/>
+      <prop name="RiseIncrement" val="1.5"/>
+      <prop name="FallDecrement" val="1.5"/>
+      <prop name="In" val="74.54"/>
+      <prop name="Out" val="74.54"/>
+    </comp>
+    <!-- /Sheet/DlyOff -->
+    <comp name="DlyOff" id="16" type="timing::DlyOff">
+      <prop name="meta" val="454950913"/>
+      <prop name="delayTime" val="10.0"/>
+    </comp>
+    <!-- /Sheet/OneShot -->
+    <comp name="OneShot" id="17" type="timing::OneShot">
+      <prop name="meta" val="454492161"/>
+      <prop name="pulseWidth" val="2.0"/>
+    </comp>
+    <!-- /Sheet/Tstat -->
+    <comp name="Tstat" id="18" type="hvac::Tstat">
+      <prop name="meta" val="891617281"/>
+      <prop name="sp" val="68.0"/>
+      <prop name="cv" val="74.54"/>
+      <prop name="out" val="true"/>
+      <prop name="lower" val="true"/>
+    </comp>
+    <!-- /Sheet/HTSPT -->
+    <comp name="HTSPT" id="19" type="CControls_BASCPI_IO::VT02">
+      <prop name="meta" val="87228417"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="68.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /Sheet/Heat -->
+    <comp name="Heat" id="20" type="CControls_BASCPI_IO::BO2">
+      <prop name="meta" val="1527906305"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /Sheet/AntiSC4 -->
+    <comp name="AntiSC4" id="22" type="CControls_HVAC::AntiSCY">
+      <prop name="meta" val="1309671425"/>
+      <prop name="MinRunTime" val="15.0"/>
+      <prop name="MinOffTime" val="120.0"/>
+    </comp>
+    <!-- /Sheet/DlyOn -->
+    <comp name="DlyOn" id="23" type="timing::DlyOn">
+      <prop name="meta" val="1125253121"/>
+      <prop name="delayTime" val="10.0"/>
+    </comp>
+    <!-- /Sheet/DlyOff1 -->
+    <comp name="DlyOff1" id="24" type="timing::DlyOff">
+      <prop name="meta" val="722075649"/>
+      <prop name="delayTime" val="60.0"/>
+    </comp>
+    <!-- /Sheet/And4 -->
+    <comp name="And4" id="14" type="logic::And4">
+      <prop name="meta" val="907149313"/>
+    </comp>
+  </comp>
+</app>
+<links>
+  <link from="/Sheet/Enable.BinaryV" to="/Sheet/DlyOff1.in"/>
+  <link from="/Sheet/tstat.outF" to="/Sheet/NumDamp.In"/>
+  <link from="/Sheet/fanst.outB" to="/Sheet/And4.in2"/>
+  <link from="/Sheet/NumDamp.Out" to="/Sheet/Tstat.cv"/>
+  <link from="/Sheet/DlyOff.out" to="/Sheet/NumDamp.FallDampInhibit"/>
+  <link from="/Sheet/DlyOff.out" to="/Sheet/NumDamp.RiseDampInhibit"/>
+  <link from="/Sheet/OneShot.out" to="/Sheet/DlyOff.in"/>
+  <link from="/Sheet/Tstat.raise" to="/Sheet/And4.in3"/>
+  <link from="/Sheet/HTSPT.FloatV" to="/Sheet/Tstat.sp"/>
+  <link from="/Sheet/AntiSC4.Out" to="/Sheet/Heat.inpB"/>
+  <link from="/Sheet/DlyOn.out" to="/Sheet/AntiSC4.In"/>
+  <link from="/Sheet/DlyOff1.in" to="/Sheet/OneShot.in"/>
+  <link from="/Sheet/DlyOff1.in" to="/Sheet/And4.in1"/>
+  <link from="/Sheet/DlyOff1.out" to="/Sheet/Fan.inpB"/>
+  <link from="/Sheet/And4.in3" to="/Sheet/And4.in4"/>
+  <link from="/Sheet/And4.out" to="/Sheet/DlyOn.in"/>
+</links>
+</sedonaApp>

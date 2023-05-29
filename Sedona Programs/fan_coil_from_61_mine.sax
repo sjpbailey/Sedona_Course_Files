@@ -1,0 +1,395 @@
+<?xml version='1.0'?>
+<sedonaApp>
+<schema>
+  <kit name="sys" checksum="d3984c51" />
+  <kit name="CControls_BASCPI_IO" checksum="063187a6" />
+  <kit name="CControls_BASCPI_Platform" checksum="cf8f16e6" />
+  <kit name="CControls_BASCPI_Web" checksum="a344e84a" />
+  <kit name="CControls_Email" checksum="397d4689" />
+  <kit name="CControls_Function" checksum="79b58b76" />
+  <kit name="CControls_Function2" checksum="725909ac" />
+  <kit name="CControls_HVAC" checksum="d216a02f" />
+  <kit name="CControls_Math" checksum="a6c8fdcd" />
+  <kit name="CControls_Schedule" checksum="f4c8eff8" />
+  <kit name="basicSchedule" checksum="7fdca638" />
+  <kit name="datetime" checksum="3a280dce" />
+  <kit name="datetimeStd" checksum="fc5628d7" />
+  <kit name="func" checksum="821b7396" />
+  <kit name="hvac" checksum="7264c67c" />
+  <kit name="inet" checksum="25648ba7" />
+  <kit name="logic" checksum="9fe95ce1" />
+  <kit name="math" checksum="c22b255c" />
+  <kit name="pricomp" checksum="b5cd6698" />
+  <kit name="pstore" checksum="7ea2cb06" />
+  <kit name="sox" checksum="397a84dd" />
+  <kit name="timing" checksum="aeaac82a" />
+  <kit name="types" checksum="10936551" />
+</schema>
+<app>
+  <prop name="deviceName" val="BAScontrolPI"/>
+  <prop name="appName" val="Default App"/>
+  <prop name="scanPeriod" val="200"/>
+  <!-- /service -->
+  <comp name="service" id="1" type="sys::Folder">
+    <prop name="meta" val="33685505"/>
+    <!-- /service/plat -->
+    <comp name="plat" id="11" type="CControls_BASCPI_Platform::BASCPIPlatformService">
+      <prop name="meta" val="34340865"/>
+      <prop name="platformId" val="ccontrols-BASCPI-4.0.0"/>
+      <prop name="platformVer" val="BAScontrol 2.0.1"/>
+      <prop name="memAvailable" val="1058484224"/>
+    </comp>
+    <!-- /service/users -->
+    <comp name="users" id="3" type="sys::UserService">
+      <prop name="meta" val="34013185"/>
+      <!-- /service/users/admin -->
+      <comp name="admin" id="4" type="sys::User">
+        <prop name="cred" val="x1nq8J5GOJVPY6zgzhtTtA9izLc="/>
+        <prop name="perm" val="2147483647"/>
+        <prop name="prov" val="255"/>
+      </comp>
+      <!-- /service/users/user -->
+      <comp name="user" id="6" type="sys::User">
+        <prop name="cred" val="F46PeTVYeItL6aAyygIVQ9OaaeY="/>
+        <prop name="perm" val="522133279"/>
+        <prop name="prov" val="1"/>
+      </comp>
+    </comp>
+    <!-- /service/sox -->
+    <comp name="sox" id="5" type="sox::SoxService">
+      <prop name="meta" val="33685505"/>
+    </comp>
+    <!-- /service/pstore -->
+    <comp name="pstore" id="12" type="pstore::PstoreService">
+      <prop name="meta" val="34734081"/>
+      <prop name="size" val="32769"/>
+    </comp>
+    <!-- /service/time -->
+    <comp name="time" id="13" type="datetimeStd::DateTimeServiceStd">
+      <prop name="meta" val="35127297"/>
+      <prop name="nanos" val="738569719000000000"/>
+      <prop name="hour" val="22"/>
+      <prop name="minute" val="15"/>
+      <prop name="second" val="19"/>
+      <prop name="year" val="2023"/>
+      <prop name="month" val="5"/>
+      <prop name="day" val="27"/>
+      <prop name="dayOfWeek" val="6"/>
+      <prop name="utcOffset" val="-28800"/>
+      <prop name="osUtcOffset" val="true"/>
+    </comp>
+  </comp>
+  <!-- /sheets -->
+  <comp name="sheets" id="10" type="sys::Folder">
+    <prop name="meta" val="33882113"/>
+    <!-- /sheets/Cmt -->
+    <comp name="Cmt" id="2" type="CControls_Function::Cmt">
+      <prop name="meta" val="620822529"/>
+      <prop name="Comment" val="Baspi_T-stat for Polyglot Node Server"/>
+    </comp>
+    <!-- /sheets/FAN -->
+    <comp name="FAN" id="7" type="CControls_BASCPI_IO::BO1">
+      <prop name="meta" val="1392967681"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /sheets/W1BO2 -->
+    <comp name="W1BO2" id="8" type="CControls_BASCPI_IO::BO2">
+      <prop name="meta" val="1411579905"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /sheets/W2BO3 -->
+    <comp name="W2BO3" id="9" type="CControls_BASCPI_IO::BO3">
+      <prop name="meta" val="1412300801"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /sheets/Y1BO4 -->
+    <comp name="Y1BO4" id="14" type="CControls_BASCPI_IO::BO4">
+      <prop name="meta" val="1413545985"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /sheets/Y2BO5 -->
+    <comp name="Y2BO5" id="15" type="CControls_BASCPI_IO::BO5">
+      <prop name="meta" val="1414266881"/>
+      <prop name="enable" val="true"/>
+    </comp>
+    <!-- /sheets/HEAT1 -->
+    <comp name="HEAT1" id="16" type="hvac::Tstat">
+      <prop name="meta" val="740491265"/>
+      <prop name="diff" val="0.5"/>
+      <prop name="sp" val="80.0"/>
+      <prop name="cv" val="79.04"/>
+      <prop name="raise" val="true"/>
+    </comp>
+    <!-- /sheets/STAT1 -->
+    <comp name="STAT1" id="17" type="CControls_BASCPI_IO::UI1">
+      <prop name="meta" val="19988481"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="ChnType" val="2"/>
+      <prop name="outF" val="79.04"/>
+      <prop name="outI" val="79"/>
+    </comp>
+    <!-- /sheets/SUPPLY2 -->
+    <comp name="SUPPLY2" id="18" type="CControls_BASCPI_IO::UI2">
+      <prop name="meta" val="20578305"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="outF" val="10.193"/>
+      <prop name="outI" val="10"/>
+    </comp>
+    <!-- /sheets/RETURN3 -->
+    <comp name="RETURN3" id="19" type="CControls_BASCPI_IO::UI3">
+      <prop name="meta" val="21102593"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="outF" val="10.193"/>
+      <prop name="outI" val="10"/>
+    </comp>
+    <!-- /sheets/AntiSCY -->
+    <comp name="AntiSCY" id="20" type="CControls_HVAC::AntiSCY">
+      <prop name="meta" val="1078001665"/>
+      <prop name="MinRunTime" val="0.0"/>
+      <prop name="MinOffTime" val="240.0"/>
+    </comp>
+    <!-- /sheets/COOL1 -->
+    <comp name="COOL1" id="24" type="hvac::Tstat">
+      <prop name="meta" val="742588417"/>
+      <prop name="diff" val="0.5"/>
+      <prop name="sp" val="76.0"/>
+      <prop name="cv" val="79.04"/>
+      <prop name="out" val="true"/>
+      <prop name="lower" val="true"/>
+    </comp>
+    <!-- /sheets/FloatOf -->
+    <comp name="FloatOf" id="27" type="math::FloatOffset">
+      <prop name="meta" val="572719105"/>
+      <prop name="out" val="80.0"/>
+      <prop name="in" val="80.0"/>
+    </comp>
+    <!-- /sheets/FloatO1 -->
+    <comp name="FloatO1" id="25" type="math::FloatOffset">
+      <prop name="meta" val="574816257"/>
+      <prop name="out" val="76.0"/>
+      <prop name="in" val="76.0"/>
+    </comp>
+    <!-- /sheets/AntiSC2 -->
+    <comp name="AntiSC2" id="28" type="CControls_HVAC::AntiSCY">
+      <prop name="meta" val="1074200577"/>
+      <prop name="MinRunTime" val="60.0"/>
+      <prop name="MinOffTime" val="0.0"/>
+    </comp>
+    <!-- /sheets/Or4 -->
+    <comp name="Or4" id="29" type="logic::Or4">
+      <prop name="meta" val="906428417"/>
+    </comp>
+    <!-- /sheets/HEAT2 -->
+    <comp name="HEAT2" id="30" type="hvac::Tstat">
+      <prop name="meta" val="741146625"/>
+      <prop name="diff" val="0.5"/>
+      <prop name="sp" val="78.0"/>
+      <prop name="cv" val="79.04"/>
+      <prop name="out" val="true"/>
+      <prop name="lower" val="true"/>
+    </comp>
+    <!-- /sheets/FloatO2 -->
+    <comp name="FloatO2" id="31" type="math::FloatOffset">
+      <prop name="meta" val="573374465"/>
+      <prop name="out" val="78.0"/>
+      <prop name="in" val="80.0"/>
+      <prop name="offset" val="-2.0"/>
+    </comp>
+    <!-- /sheets/COOL2 -->
+    <comp name="COOL2" id="32" type="hvac::Tstat">
+      <prop name="meta" val="743243777"/>
+      <prop name="diff" val="0.5"/>
+      <prop name="sp" val="78.0"/>
+      <prop name="cv" val="79.04"/>
+      <prop name="out" val="true"/>
+      <prop name="lower" val="true"/>
+    </comp>
+    <!-- /sheets/FloatO3 -->
+    <comp name="FloatO3" id="33" type="math::FloatOffset">
+      <prop name="meta" val="575471617"/>
+      <prop name="out" val="78.0"/>
+      <prop name="in" val="76.0"/>
+      <prop name="offset" val="2.0"/>
+    </comp>
+    <!-- /sheets/FANON4 -->
+    <comp name="FANON4" id="22" type="CControls_BASCPI_IO::UI4">
+      <prop name="meta" val="21692417"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="outF" val="10.193"/>
+      <prop name="outI" val="10"/>
+    </comp>
+    <!-- /sheets/SPHeat1 -->
+    <comp name="SPHeat1" id="34" type="CControls_BASCPI_IO::VT01">
+      <prop name="meta" val="18677761"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="80.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /sheets/AntiSC4 -->
+    <comp name="AntiSC4" id="35" type="CControls_HVAC::AntiSCY">
+      <prop name="meta" val="1076035585"/>
+      <prop name="MinRunTime" val="10.0"/>
+      <prop name="MinOffTime" val="240.0"/>
+    </comp>
+    <!-- /sheets/SMOOTH -->
+    <comp name="SMOOTH" id="36" type="CControls_HVAC::NumDamp">
+      <prop name="meta" val="254869505"/>
+      <prop name="UpdateInterval" val="1.5"/>
+      <prop name="RiseDampInhibit" val="true"/>
+      <prop name="FallDampInhibit" val="true"/>
+      <prop name="In" val="79.04"/>
+      <prop name="Out" val="79.04"/>
+    </comp>
+    <!-- /sheets/And2 -->
+    <comp name="And2" id="37" type="logic::And2">
+      <prop name="meta" val="908984321"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/And21 -->
+    <comp name="And21" id="38" type="logic::And2">
+      <prop name="meta" val="911015937"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/SPCool2 -->
+    <comp name="SPCool2" id="39" type="CControls_BASCPI_IO::VT02">
+      <prop name="meta" val="19333121"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="76.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /sheets/FanOn1 -->
+    <comp name="FanOn1" id="40" type="timing::DlyOn">
+      <prop name="meta" val="1075380225"/>
+      <prop name="delayTime" val="35.0"/>
+    </comp>
+    <!-- /sheets/FanOff2 -->
+    <comp name="FanOff2" id="41" type="timing::DlyOff">
+      <prop name="meta" val="1243152385"/>
+      <prop name="delayTime" val="60.0"/>
+    </comp>
+    <!-- /sheets/SCHED3 -->
+    <comp name="SCHED3" id="43" type="CControls_BASCPI_IO::VT03">
+      <prop name="meta" val="18022401"/>
+      <prop name="Initialized" val="true"/>
+    </comp>
+    <!-- /sheets/FanOff1 -->
+    <comp name="FanOff1" id="44" type="timing::DlyOff">
+      <prop name="meta" val="1581318145"/>
+      <prop name="delayTime" val="5.0"/>
+    </comp>
+    <!-- /sheets/OVRFAN4 -->
+    <comp name="OVRFAN4" id="45" type="CControls_BASCPI_IO::VT04">
+      <prop name="meta" val="17301505"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="1.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /sheets/FanOff3 -->
+    <comp name="FanOff3" id="46" type="timing::DlyOff">
+      <prop name="meta" val="185073665"/>
+      <prop name="out" val="true"/>
+      <prop name="in" val="true"/>
+      <prop name="delayTime" val="10.0"/>
+    </comp>
+    <!-- /sheets/And22 -->
+    <comp name="And22" id="26" type="logic::And2">
+      <prop name="meta" val="1243807745"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/And221 -->
+    <comp name="And221" id="42" type="logic::And2">
+      <prop name="meta" val="1244528641"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/And222 -->
+    <comp name="And222" id="47" type="logic::And2">
+      <prop name="meta" val="1245773825"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/HEATA5 -->
+    <comp name="HEATA5" id="49" type="CControls_BASCPI_IO::VT05">
+      <prop name="meta" val="1060438017"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="1.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /sheets/COOLA6 -->
+    <comp name="COOLA6" id="50" type="CControls_BASCPI_IO::VT06">
+      <prop name="meta" val="1079312385"/>
+      <prop name="Initialized" val="true"/>
+      <prop name="FloatV" val="1.0"/>
+      <prop name="BinaryV" val="true"/>
+    </comp>
+    <!-- /sheets/And4 -->
+    <comp name="And4" id="51" type="logic::And4">
+      <prop name="meta" val="1246494721"/>
+      <prop name="in3" val="true"/>
+      <prop name="in4" val="true"/>
+    </comp>
+    <!-- /sheets/And23 -->
+    <comp name="And23" id="48" type="logic::And2">
+      <prop name="meta" val="908263425"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/And24 -->
+    <comp name="And24" id="52" type="logic::And2">
+      <prop name="meta" val="910360577"/>
+      <prop name="in2" val="true"/>
+    </comp>
+    <!-- /sheets/And25 -->
+    <comp name="And25" id="53" type="logic::And2">
+      <prop name="meta" val="386400257"/>
+      <prop name="in1" val="true"/>
+    </comp>
+  </comp>
+</app>
+<links>
+  <link from="/sheets/W1BO2.enable" to="/sheets/And2.in2"/>
+  <link from="/sheets/W1BO2.inpB" to="/sheets/FanOn1.in"/>
+  <link from="/sheets/Y1BO4.inpB" to="/sheets/And21.in1"/>
+  <link from="/sheets/Y1BO4.inpB" to="/sheets/FanOff1.in"/>
+  <link from="/sheets/HEAT1.raise" to="/sheets/And23.in2"/>
+  <link from="/sheets/STAT1.outF" to="/sheets/SMOOTH.In"/>
+  <link from="/sheets/AntiSCY.Out" to="/sheets/And222.in1"/>
+  <link from="/sheets/COOL1.lower" to="/sheets/And24.in2"/>
+  <link from="/sheets/FloatOf.out" to="/sheets/HEAT1.sp"/>
+  <link from="/sheets/FloatOf.in" to="/sheets/FloatO2.in"/>
+  <link from="/sheets/FloatO1.out" to="/sheets/COOL1.sp"/>
+  <link from="/sheets/FloatO1.in" to="/sheets/FloatO3.in"/>
+  <link from="/sheets/AntiSC2.Out" to="/sheets/FAN.inpB"/>
+  <link from="/sheets/Or4.out" to="/sheets/AntiSC2.In"/>
+  <link from="/sheets/HEAT2.raise" to="/sheets/And2.in1"/>
+  <link from="/sheets/FloatO2.out" to="/sheets/HEAT2.sp"/>
+  <link from="/sheets/COOL2.lower" to="/sheets/And21.in2"/>
+  <link from="/sheets/FloatO3.out" to="/sheets/COOL2.sp"/>
+  <link from="/sheets/SPHeat1.FloatV" to="/sheets/FloatOf.in"/>
+  <link from="/sheets/AntiSC4.Out" to="/sheets/And22.in1"/>
+  <link from="/sheets/SMOOTH.Out" to="/sheets/HEAT1.cv"/>
+  <link from="/sheets/SMOOTH.Out" to="/sheets/COOL1.cv"/>
+  <link from="/sheets/SMOOTH.Out" to="/sheets/HEAT2.cv"/>
+  <link from="/sheets/SMOOTH.Out" to="/sheets/COOL2.cv"/>
+  <link from="/sheets/And2.out" to="/sheets/And221.in1"/>
+  <link from="/sheets/And21.out" to="/sheets/And4.in2"/>
+  <link from="/sheets/SPCool2.FloatV" to="/sheets/FloatO1.in"/>
+  <link from="/sheets/FanOn1.out" to="/sheets/FanOff2.in"/>
+  <link from="/sheets/FanOff2.out" to="/sheets/Or4.in4"/>
+  <link from="/sheets/SCHED3.BinaryV" to="/sheets/And23.in1"/>
+  <link from="/sheets/SCHED3.BinaryV" to="/sheets/And24.in1"/>
+  <link from="/sheets/SCHED3.BinaryV" to="/sheets/And25.in2"/>
+  <link from="/sheets/FanOff1.out" to="/sheets/Or4.in3"/>
+  <link from="/sheets/OVRFAN4.BinaryV" to="/sheets/FanOff3.in"/>
+  <link from="/sheets/FanOff3.out" to="/sheets/And25.in1"/>
+  <link from="/sheets/And22.out" to="/sheets/W1BO2.inpB"/>
+  <link from="/sheets/And221.out" to="/sheets/W2BO3.inpB"/>
+  <link from="/sheets/And222.out" to="/sheets/Y1BO4.inpB"/>
+  <link from="/sheets/And222.out" to="/sheets/And4.in1"/>
+  <link from="/sheets/HEATA5.BinaryV" to="/sheets/And22.in2"/>
+  <link from="/sheets/HEATA5.BinaryV" to="/sheets/And221.in2"/>
+  <link from="/sheets/COOLA6.BinaryV" to="/sheets/And222.in2"/>
+  <link from="/sheets/COOLA6.BinaryV" to="/sheets/And4.in3"/>
+  <link from="/sheets/And4.in3" to="/sheets/And4.in4"/>
+  <link from="/sheets/And4.out" to="/sheets/Y2BO5.inpB"/>
+  <link from="/sheets/And23.out" to="/sheets/AntiSC4.In"/>
+  <link from="/sheets/And25.out" to="/sheets/Or4.in1"/>
+</links>
+</sedonaApp>
